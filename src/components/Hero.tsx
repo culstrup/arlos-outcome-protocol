@@ -3,24 +3,21 @@ import heroBackground from "@/assets/hero-background.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-background overflow-hidden">
-      {/* Background image with overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      />
-      <div className="absolute inset-0 bg-arlos-gradient-subtle" />
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden">
+      {/* Clean geometric background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--arlos-blue)/0.1),transparent_50%),radial-gradient(circle_at_80%_80%,hsl(var(--arlos-purple)/0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_0%,hsl(var(--arlos-blue)/0.05)_50%,transparent_100%)]" />
       
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <div className="mb-12 animate-fade-in-up">
-          <h1 className="text-7xl md:text-9xl font-bold bg-arlos-gradient bg-clip-text text-transparent mb-8 animate-pulse-glow">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+        <div className="mb-16 animate-fade-in-up">
+          <h1 className="text-8xl md:text-[12rem] font-black gradient-text mb-8 tracking-tight">
             ARLOS
           </h1>
-          <p className="text-2xl md:text-3xl text-foreground mb-6 font-semibold">
+          <p className="text-3xl md:text-4xl text-foreground mb-8 font-light tracking-wide">
             The Future of Outcome-Driven Work
           </p>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
             Replace traditional corporate hierarchies with prediction markets. 
             Coordinate work through economic incentives, not meetings.
           </p>
