@@ -26,7 +26,12 @@ const Header = () => {
             </a>
           </nav>
           
-          <Button variant="arlos-outline" size="lg" className="hover-lift text-lg px-6 py-3">
+          <Button 
+            variant="arlos-outline" 
+            size="lg" 
+            className="hover-lift text-lg px-6 py-3"
+            onClick={() => window.location.href = 'mailto:christian@gsdat.work'}
+          >
             Contact
           </Button>
         </div>

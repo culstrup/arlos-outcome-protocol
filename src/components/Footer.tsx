@@ -27,7 +27,7 @@ const Footer = () => {
           <div>
             <h3 className="font-bold mb-6 text-lg gradient-text">Resources</h3>
             <ul className="space-y-3 text-muted-foreground">
-              <li><a href="#whitepaper" className="hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block">Whitepaper</a></li>
+              <li><a href="mailto:christian@gsdat.work?subject=ARLOS Framework Information" className="hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block">Contact for Info</a></li>
               <li><a href="#case-studies" className="hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block">Case Studies</a></li>
               <li><a href="#comparison" className="hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block">RASCI vs ARLOS</a></li>
             </ul>

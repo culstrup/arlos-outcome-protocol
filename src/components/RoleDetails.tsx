@@ -133,8 +133,13 @@ const RoleDetails = () => {
               <Button variant="arlos" size="lg" className="text-lg px-8 py-6 hover-lift">
                 Start Your Transition
               </Button>
-              <Button variant="arlos-outline" size="lg" className="text-lg px-8 py-6 hover-lift">
-                Download Whitepaper
+              <Button 
+                variant="arlos-outline" 
+                size="lg" 
+                className="text-lg px-8 py-6 hover-lift"
+                onClick={() => window.location.href = 'mailto:christian@gsdat.work?subject=ARLOS Framework Information'}
+              >
+                Learn More
               </Button>
             </div>
           </div>
