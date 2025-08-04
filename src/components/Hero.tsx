@@ -51,9 +51,10 @@ const Hero = () => {
                 <div className="mb-6 group-hover:scale-110 transition-transform duration-300 flex justify-center">
                   <item.icon size={48} className={`${item.color} group-hover:text-arlos-blue transition-colors duration-300`} strokeWidth={1.5} />
                 </div>
-                <div className="font-bold text-foreground mb-3 text-xl">{item.role}</div>
+                <div className="font-bold text-foreground mb-3 text-xl">
+                  <span className="text-arlos-purple font-extrabold">{item.letter}</span>{item.role.slice(1)}
+                </div>
                 <div className="text-muted-foreground leading-relaxed">{item.desc}</div>
-                <div className="mt-4 text-sm font-bold gradient-text">{item.letter}</div>
               </div>
             </div>
           ))}
