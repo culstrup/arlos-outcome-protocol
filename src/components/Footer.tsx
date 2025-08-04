@@ -34,8 +34,16 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-arlos-blue/20 mt-12 pt-8 text-center text-muted-foreground">
+        <div className="border-t border-arlos-blue/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-muted-foreground">
           <p className="text-lg">&copy; 2025 ARLOS.pro. The future of work is outcome-driven.</p>
+          <a 
+            href="https://x.com/curious_vii/status/1952434140411748727" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-sm hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block opacity-75 hover:opacity-100"
+          >
+            Origin story & inspiration →
+          </a>
         </div>
       </div>
     </footer>
