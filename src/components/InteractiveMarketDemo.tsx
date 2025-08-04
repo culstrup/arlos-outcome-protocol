@@ -438,6 +438,14 @@ const InteractiveMarketDemo = () => {
           </div>
         </div>
 
+        <div className="mb-8 p-4 bg-muted rounded-lg text-sm text-muted-foreground">
+          {selectedMarketData.phase === 'private' && 'In Private phase, invited participants trade shares and request resources.'}
+          {selectedMarketData.phase === 'public' && 'Public phase opens trading to everyone and invites wider insight.'}
+          {selectedMarketData.phase === 'execution' && 'During Execution, agents carry out tasks based on market signals.'}
+          {selectedMarketData.phase === 'verification' && 'Verification phase lets oracles review the work and vote on the outcome.'}
+          {selectedMarketData.phase === 'resolved' && 'Market resolved: payouts issued and reputation scores update.'}
+        </div>
+
         <Tabs defaultValue="trade" className="w-full">
           <TabsList className="grid w-full grid-cols-4 mb-8">
             <TabsTrigger value="trade">Trading</TabsTrigger>
@@ -637,7 +645,12 @@ const InteractiveMarketDemo = () => {
                       <p className="text-sm text-muted-foreground mb-3">{content.description}</p>
                       
                       {content.sensitivity === 'public' ? (
-                        <Button size="sm" variant="outline" className="w-full">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="w-full"
+                          onClick={() => alert(`Viewing: ${content.title}`)}
+                        >
                           <Eye className="w-4 h-4 mr-2" />
                           View Content
                         </Button>
@@ -701,6 +714,11 @@ const InteractiveMarketDemo = () => {
             <Card>
               <CardHeader>
                 <CardTitle>Price History & Market Sentiment</CardTitle>
+                <CardDescription>
+                  {selectedMarketData.phase === 'resolved'
+                    ? 'Final outcome locked; chart shows complete history.'
+                    : 'Chart updates as trades occur and phases progress.'}
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="h-80">
@@ -724,8 +742,11 @@ const InteractiveMarketDemo = () => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="reputation" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <TabsContent value="reputation" className="space-y-6">
+          <p className="text-sm text-muted-foreground">
+            Reputation scores adjust when outcomes are verified and the market resolves.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {MOCK_AGENTS.map(agent => (
                 <Card key={agent.id}>
                   <CardHeader className="pb-3">
@@ -770,8 +791,8 @@ const InteractiveMarketDemo = () => {
                   </CardContent>
                 </Card>
               ))}
-            </div>
-          </TabsContent>
+          </div>
+        </TabsContent>
         </Tabs>
       </div>
     </section>
