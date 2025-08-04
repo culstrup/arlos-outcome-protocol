@@ -40,17 +40,23 @@ All colors MUST be HSL.
     /* ARLOS Brand Colors */
     --arlos-blue: 243 75% 59%;
     --arlos-purple: 280 100% 70%;
+    --arlos-accent: 260 100% 85%;
     --arlos-gradient: linear-gradient(135deg, hsl(var(--arlos-blue)), hsl(var(--arlos-purple)));
     --arlos-gradient-subtle: linear-gradient(135deg, hsl(var(--arlos-blue) / 0.1), hsl(var(--arlos-purple) / 0.1));
+    --arlos-gradient-hover: linear-gradient(135deg, hsl(var(--arlos-blue) / 0.9), hsl(var(--arlos-purple) / 0.9));
     
-    /* Elegant shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--arlos-blue) / 0.3);
-    --shadow-glow: 0 0 40px hsl(var(--arlos-blue) / 0.2);
+    /* Enhanced shadows */
+    --shadow-elegant: 0 20px 60px -15px hsl(var(--arlos-blue) / 0.4);
+    --shadow-glow: 0 0 60px hsl(var(--arlos-blue) / 0.3);
+    --shadow-soft: 0 8px 30px hsl(var(--arlos-blue) / 0.15);
+    --shadow-card: 0 4px 20px hsl(var(--arlos-blue) / 0.1);
     
-    /* Smooth transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Advanced animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elastic: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -116,4 +122,68 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer utilities {
+  /* Custom animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out;
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-out;
+  }
+  
+  /* Hover effects */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  /* Glass effect */
+  .glass-effect {
+    background: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    background: var(--arlos-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--arlos-blue) / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(var(--arlos-blue) / 0.6); }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
