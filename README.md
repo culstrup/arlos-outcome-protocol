@@ -1,8 +1,57 @@
-# Welcome to your Lovable project
+# ARLOS - The Future of Outcome-Driven Work
 
-## Project info
+> Replace traditional corporate hierarchies with prediction markets. ARLOS enables outcome-driven coordination through economic incentives.
 
-**URL**: https://lovable.dev/projects/ffe6347c-0645-478b-89ce-b3b81ae7a0bf
+🌐 **Live Site**: [https://arlos.pro](https://arlos.pro)  
+⚡ **Demo Environment**: https://lovable.dev/projects/ffe6347c-0645-478b-89ce-b3b81ae7a0bf
+
+## About ARLOS
+
+ARLOS is an innovative organizational framework that replaces traditional corporate hierarchies with prediction markets and economic incentives. The framework consists of five key roles:
+
+- **Agents** - Execute tasks and earn based on outcomes
+- **Researchers** - Provide insights and analysis 
+- **Liquidity Providers** - Enable market functionality
+- **Oracles** - Verify and validate outcomes
+- **Sponsors** - Fund initiatives and set objectives
+
+## 🚀 Contributing
+
+We welcome contributions from developers, designers, economists, and organizational theorists! Here are ways you can help:
+
+### Quick Start for Contributors
+
+1. **Fork this repository**
+2. **Clone your fork**: `git clone https://github.com/yourusername/arlos.git`
+3. **Install dependencies**: `npm install`
+4. **Start development**: `npm run dev`
+5. **Make your changes** and submit a pull request
+
+### Areas We Need Help With
+
+- 🎨 **UI/UX Design** - Improve the user interface and experience
+- 📊 **Data Visualization** - Enhance charts and interactive elements
+- 🧠 **Economic Models** - Refine prediction market mechanics
+- 📝 **Documentation** - Improve guides and explanations
+- 🔧 **Performance** - Optimize loading and interactions
+- 🌐 **Accessibility** - Make the site usable for everyone
+
+### Development Guidelines
+
+- Follow the existing code style and patterns
+- Write clear, descriptive commit messages
+- Add comments for complex logic
+- Test your changes thoroughly
+- Update documentation as needed
+
+## 📋 Roadmap
+
+- [ ] Interactive Network Demo
+- [ ] Live Market Simulation
+- [ ] Real-time prediction markets
+- [ ] Economic model visualizations
+- [ ] Integration examples
+- [ ] Mobile optimization
 
 ## How can I edit this code?
 
