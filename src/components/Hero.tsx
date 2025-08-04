@@ -25,11 +25,11 @@ const Hero = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16 animate-slide-up">
-          <Button variant="arlos" size="lg" className="text-xl px-12 py-8 hover-lift shadow-soft">
-            Learn the Framework
+          <Button asChild variant="arlos" size="lg" className="text-xl px-12 py-8 hover-lift shadow-soft">
+            <a href="#framework">Learn the Framework</a>
           </Button>
-          <Button variant="arlos-outline" size="lg" className="text-xl px-12 py-8 hover-lift">
-            See the Comparison
+          <Button asChild variant="arlos-outline" size="lg" className="text-xl px-12 py-8 hover-lift">
+            <a href="#comparison">See the Comparison</a>
           </Button>
         </div>
         
