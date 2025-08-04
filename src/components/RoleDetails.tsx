@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { copyEmail } from "@/lib/copyEmail";
 import networkVisual from "@/assets/network-visual.jpg";
 
 const RoleDetails = () => {
@@ -131,18 +132,18 @@ const RoleDetails = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button
-                asChild
                 variant="arlos"
                 size="lg"
                 className="text-lg px-8 py-6 hover-lift"
+                onClick={copyEmail}
               >
-                <a href="mailto:christian@gsdat.work?subject=Start Your ARLOS Transition">Start Your Transition</a>
+                Start Your Transition
               </Button>
               <Button
                 variant="arlos-outline"
                 size="lg"
                 className="text-lg px-8 py-6 hover-lift"
-                onClick={() => window.location.href = 'mailto:christian@gsdat.work?subject=ARLOS Framework Information'}
+                onClick={copyEmail}
               >
                 Learn More
               </Button>

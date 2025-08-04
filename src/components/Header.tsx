@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { copyEmail } from "@/lib/copyEmail";
 
 const Header = () => {
   return (
@@ -26,11 +27,11 @@ const Header = () => {
             </a>
           </nav>
           
-          <Button 
-            variant="arlos-outline" 
-            size="lg" 
+          <Button
+            variant="arlos-outline"
+            size="lg"
             className="hover-lift text-lg px-6 py-3"
-            onClick={() => window.location.href = 'mailto:christian@gsdat.work'}
+            onClick={copyEmail}
           >
             Contact
           </Button>

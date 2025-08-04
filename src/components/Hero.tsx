@@ -12,14 +12,14 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         <div className="mb-16 animate-fade-in-up">
-          <h1 className="text-8xl md:text-[12rem] font-black gradient-text mb-8 tracking-tight">
+          <h1 className="text-6xl sm:text-8xl md:text-[12rem] font-black gradient-text mb-8 tracking-tight">
             ARLOS
           </h1>
-          <p className="text-3xl md:text-4xl text-foreground mb-8 font-light tracking-wide">
+          <p className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-8 font-light tracking-wide">
             The Future of Outcome-Driven Work
           </p>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
-            Replace traditional corporate hierarchies with prediction markets. 
+          <p className="text-lg sm:text-xl text-foreground max-w-4xl mx-auto leading-relaxed font-light">
+            Replace traditional corporate hierarchies with prediction markets.
             Coordinate work through economic incentives, not meetings.
           </p>
         </div>
