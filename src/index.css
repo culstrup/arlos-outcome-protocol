@@ -17,8 +17,9 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 243 75% 59%;
     --primary-foreground: 210 40% 98%;
+    --primary-glow: 250 100% 76%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -26,15 +27,28 @@ All colors MUST be HSL.
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 280 100% 70%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 243 75% 59%;
+
+    /* ARLOS Brand Colors */
+    --arlos-blue: 243 75% 59%;
+    --arlos-purple: 280 100% 70%;
+    --arlos-gradient: linear-gradient(135deg, hsl(var(--arlos-blue)), hsl(var(--arlos-purple)));
+    --arlos-gradient-subtle: linear-gradient(135deg, hsl(var(--arlos-blue) / 0.1), hsl(var(--arlos-purple) / 0.1));
+    
+    /* Elegant shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--arlos-blue) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--arlos-blue) / 0.2);
+    
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
