@@ -53,7 +53,7 @@ const RoleDetails = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-muted/30">
+    <section id="roles" className="py-24 bg-gradient-to-b from-background to-muted/30">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20 animate-fade-in-up">
           <h2 className="text-5xl font-bold mb-6 gradient-text">The ARLOS Framework</h2>
@@ -130,12 +130,17 @@ const RoleDetails = () => {
               It's time to move beyond traditional hierarchies.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button variant="arlos" size="lg" className="text-lg px-8 py-6 hover-lift">
-                Start Your Transition
+              <Button
+                asChild
+                variant="arlos"
+                size="lg"
+                className="text-lg px-8 py-6 hover-lift"
+              >
+                <a href="mailto:christian@gsdat.work?subject=Start Your ARLOS Transition">Start Your Transition</a>
               </Button>
-              <Button 
-                variant="arlos-outline" 
-                size="lg" 
+              <Button
+                variant="arlos-outline"
+                size="lg"
                 className="text-lg px-8 py-6 hover-lift"
                 onClick={() => window.location.href = 'mailto:christian@gsdat.work?subject=ARLOS Framework Information'}
               >

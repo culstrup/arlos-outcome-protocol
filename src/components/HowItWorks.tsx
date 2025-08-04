@@ -34,7 +34,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-24 bg-background">
+    <section id="framework" className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20 animate-fade-in-up">
           <h2 className="text-5xl font-bold mb-6 gradient-text">How ARLOS Works</h2>
