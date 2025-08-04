@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Activity, Search, TrendingUp, Eye, Rocket } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
 
 const Hero = () => {
@@ -32,14 +33,14 @@ const Hero = () => {
           </Button>
         </div>
         
-        {/* ARLOS acronym breakdown */}
+        {/* ARLOS acronym breakdown with icons */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 max-w-6xl mx-auto">
           {[
-            { letter: "A", role: "Agents", desc: "Create facts through action", delay: "0s" },
-            { letter: "R", role: "Researchers", desc: "Curate and analyze information", delay: "0.1s" },
-            { letter: "L", role: "Liquidity Providers", desc: "Enable capital and attention flow", delay: "0.2s" },
-            { letter: "O", role: "Oracles", desc: "Verify outcomes objectively", delay: "0.3s" },
-            { letter: "S", role: "Sponsors", desc: "Initiate and fund outcomes", delay: "0.4s" }
+            { letter: "A", role: "Agents", desc: "Create facts through action", delay: "0s", icon: Activity, color: "text-blue-500" },
+            { letter: "R", role: "Researchers", desc: "Curate and analyze information", delay: "0.1s", icon: Search, color: "text-emerald-500" },
+            { letter: "L", role: "Liquidity Providers", desc: "Enable capital and attention flow", delay: "0.2s", icon: TrendingUp, color: "text-purple-500" },
+            { letter: "O", role: "Oracles", desc: "Verify outcomes objectively", delay: "0.3s", icon: Eye, color: "text-orange-500" },
+            { letter: "S", role: "Sponsors", desc: "Initiate and fund outcomes", delay: "0.4s", icon: Rocket, color: "text-pink-500" }
           ].map((item, index) => (
             <div 
               key={index} 
@@ -47,11 +48,12 @@ const Hero = () => {
               style={{ animationDelay: item.delay }}
             >
               <div className="glass-effect rounded-xl p-8 h-full shadow-card group-hover:shadow-elegant transition-all duration-500 group-hover:border-arlos-blue/30">
-                <div className="text-4xl font-bold gradient-text mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {item.letter}
+                <div className="mb-6 group-hover:scale-110 transition-transform duration-300 flex justify-center">
+                  <item.icon size={48} className={`${item.color} group-hover:text-arlos-blue transition-colors duration-300`} strokeWidth={1.5} />
                 </div>
-                <div className="font-bold text-foreground mb-3 text-lg">{item.role}</div>
+                <div className="font-bold text-foreground mb-3 text-xl">{item.role}</div>
                 <div className="text-muted-foreground leading-relaxed">{item.desc}</div>
+                <div className="mt-4 text-sm font-bold gradient-text">{item.letter}</div>
               </div>
             </div>
           ))}
