@@ -14,8 +14,15 @@ import {
 import '@xyflow/react/dist/style.css';
 import { Card } from '@/components/ui/card';
 
+interface ArlosNodeData {
+  letter: string;
+  name: string;
+  role: string;
+  color: string;
+}
+
 // Custom node component for ARLOS roles
-const ARLOSNode = ({ data }: { data: any }) => {
+const ARLOSNode = ({ data }: { data: ArlosNodeData }) => {
   return (
     <div className={`px-6 py-4 rounded-lg border-2 ${data.color} bg-background/95 backdrop-blur-sm shadow-lg min-w-[120px] text-center`}>
       <div className="text-2xl font-bold mb-1">{data.letter}</div>

@@ -547,9 +547,9 @@ const MarketSimulation = () => {
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="time" />
                             <YAxis />
-                            <Tooltip 
-                              formatter={(value: any, name: string) => [
-                                `${value.toFixed(1)}${name === 'probability' ? '%' : '¢'}`, 
+                            <Tooltip
+                              formatter={(value: number, name: string) => [
+                                `${value.toFixed(1)}${name === 'probability' ? '%' : '¢'}`,
                                 name === 'probability' ? 'Probability' : name === 'yesPrice' ? 'YES Price' : 'NO Price'
                               ]}
                             />

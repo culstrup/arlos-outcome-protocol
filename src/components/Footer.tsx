@@ -1,3 +1,6 @@
+import { copyEmail } from "@/lib/copyEmail";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-t from-muted/80 to-background border-t border-arlos-blue/20">
@@ -27,7 +30,15 @@ const Footer = () => {
           <div>
             <h3 className="font-bold mb-6 text-lg gradient-text">Resources</h3>
             <ul className="space-y-3 text-muted-foreground">
-              <li><a href="mailto:christian@gsdat.work?subject=ARLOS Framework Information" className="hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block">Contact for Info</a></li>
+              <li>
+                <a
+                  href="#"
+                  onClick={(e) => { e.preventDefault(); copyEmail(); }}
+                  className="hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block"
+                >
+                  Contact for Info
+                </a>
+              </li>
               <li><a href="#case-studies" className="hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block">Case Studies</a></li>
               <li><a href="#comparison" className="hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block">RASCI vs ARLOS</a></li>
             </ul>
@@ -36,14 +47,12 @@ const Footer = () => {
         
         <div className="border-t border-arlos-blue/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-muted-foreground">
           <p className="text-lg">&copy; 2025 ARLOS.pro. The future of work is outcome-driven.</p>
-          <a 
-            href="https://x.com/curious_vii/status/1952434140411748727" 
-            target="_blank" 
-            rel="noopener noreferrer"
+          <Link
+            to="/origin-story"
             className="text-sm hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block opacity-75 hover:opacity-100"
           >
             Origin story & inspiration →
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
