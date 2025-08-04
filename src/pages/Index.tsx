@@ -3,8 +3,8 @@ import Hero from "@/components/Hero";
 import Metrics from "@/components/Metrics";
 import HowItWorks from "@/components/HowItWorks";
 import Comparison from "@/components/Comparison";
-import NetworkDemo from "@/components/NetworkDemo";
-import MarketSimulation from "@/components/MarketSimulation";
+import ARLOSStoryFlow from "@/components/ARLOSStoryFlow";
+import InteractiveMarketDemo from "@/components/InteractiveMarketDemo";
 import RoleDetails from "@/components/RoleDetails";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -17,8 +17,8 @@ const Index = () => {
       <Metrics />
       <HowItWorks />
       <Comparison />
-      <NetworkDemo />
-      <MarketSimulation />
+      <ARLOSStoryFlow />
+      <InteractiveMarketDemo />
       <RoleDetails />
       <FAQ />
       <Footer />
