@@ -4,6 +4,7 @@ import Metrics from "@/components/Metrics";
 import HowItWorks from "@/components/HowItWorks";
 import Comparison from "@/components/Comparison";
 import NetworkDemo from "@/components/NetworkDemo";
+import MarketSimulation from "@/components/MarketSimulation";
 import RoleDetails from "@/components/RoleDetails";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -17,6 +18,7 @@ const Index = () => {
       <HowItWorks />
       <Comparison />
       <NetworkDemo />
+      <MarketSimulation />
       <RoleDetails />
       <FAQ />
       <Footer />
