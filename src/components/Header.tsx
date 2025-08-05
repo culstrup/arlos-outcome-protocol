@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { copyEmail } from "@/lib/copyEmail";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -28,12 +28,12 @@ const Header = () => {
           </nav>
           
           <Button
+            asChild
             variant="arlos-outline"
             size="lg"
             className="hover-lift text-lg px-6 py-3"
-            onClick={copyEmail}
           >
-            Contact
+            <Link to="/contact">Contact</Link>
           </Button>
         </div>
       </div>

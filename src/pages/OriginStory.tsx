@@ -15,16 +15,7 @@ const OriginStory = () => (
         Hosting the story here ensures anyone can learn about the motivation behind ARLOS without needing a social media account.
       </p>
       <p className="mb-4 text-muted-foreground">
-        Curious about the original spark?{' '}
-        <a
-          href="https://x.com/curious_vii/status/1952434140411748727"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-arlos-blue underline"
-        >
-          Read the founding tweet on X
-        </a>
-        .
+        This page preserves the origin story without relying on any external platforms.
       </p>
     </main>
     <Footer />

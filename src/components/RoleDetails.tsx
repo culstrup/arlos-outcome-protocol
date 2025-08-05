@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { copyEmail } from "@/lib/copyEmail";
+import { Link } from "react-router-dom";
 import networkVisual from "@/assets/network-visual.jpg";
 
 const RoleDetails = () => {
@@ -132,20 +132,20 @@ const RoleDetails = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button
+                asChild
                 variant="arlos"
                 size="lg"
                 className="text-lg px-8 py-6 hover-lift"
-                onClick={copyEmail}
               >
-                Start Your Transition
+                <Link to="/contact">Start Your Transition</Link>
               </Button>
               <Button
+                asChild
                 variant="arlos-outline"
                 size="lg"
                 className="text-lg px-8 py-6 hover-lift"
-                onClick={copyEmail}
               >
-                Learn More
+                <Link to="/contact">Learn More</Link>
               </Button>
             </div>
           </div>

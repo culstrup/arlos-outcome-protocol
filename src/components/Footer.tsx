@@ -1,4 +1,3 @@
-import { copyEmail } from "@/lib/copyEmail";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -31,15 +30,13 @@ const Footer = () => {
             <h3 className="font-bold mb-6 text-lg gradient-text">Resources</h3>
             <ul className="space-y-3 text-muted-foreground">
               <li>
-                <a
-                  href="#"
-                  onClick={(e) => { e.preventDefault(); copyEmail(); }}
+                <Link
+                  to="/contact"
                   className="hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block"
                 >
                   Contact for Info
-                </a>
+                </Link>
               </li>
-              <li><a href="#case-studies" className="hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block">Case Studies</a></li>
               <li><a href="#comparison" className="hover:text-arlos-blue transition-colors duration-300 hover:scale-105 inline-block">RASCI vs ARLOS</a></li>
             </ul>
           </div>

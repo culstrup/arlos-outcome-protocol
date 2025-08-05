@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import { TrendingUp, TrendingDown, Users, DollarSign, Activity, Target, Zap, Clock, Award, Eye, Scale, MessageSquare, Link as LinkIcon } from 'lucide-react';
 
@@ -45,6 +46,7 @@ interface ContentItem {
   type: 'document' | 'strategy' | 'contact' | 'resource';
   sensitivity: 'public' | 'restricted' | 'confidential';
   description: string;
+  content?: string;
 }
 
 interface AccessRequest {
@@ -165,7 +167,8 @@ const MOCK_CONTENT: ContentItem[] = [
     title: 'Brand Guidelines & Voice',
     type: 'resource',
     sensitivity: 'public',
-    description: 'Public brand guidelines for consistent messaging'
+    description: 'Public brand guidelines for consistent messaging',
+    content: 'This is a preview of the brand guidelines. In the full application, the complete document would be displayed here.'
   }
 ];
 
@@ -178,6 +181,7 @@ const InteractiveMarketDemo = () => {
   const [tradeReasoning, setTradeReasoning] = useState('');
   const [accessReason, setAccessReason] = useState('');
   const [selectedContent, setSelectedContent] = useState<string | null>(null);
+  const [previewContent, setPreviewContent] = useState<ContentItem | null>(null);
 
   // Enhanced AMM pricing
   const calculatePrice = useCallback((yesShares: number, noShares: number, type: 'yes' | 'no'): number => {
@@ -336,10 +340,16 @@ const InteractiveMarketDemo = () => {
       if (nextPhase === 'public' || nextPhase === 'execution') newStatus = 'public';
       if (nextPhase === 'resolved') newStatus = 'resolved';
 
+      let resolution = market.resolution;
+      if (nextPhase === 'resolved') {
+        resolution = market.yesShares >= market.noShares ? 'yes' : 'no';
+      }
+
       return {
         ...market,
         phase: nextPhase,
-        status: newStatus
+        status: newStatus,
+        resolution
       };
     }));
   }, [selectedMarket]);
@@ -443,7 +453,7 @@ const InteractiveMarketDemo = () => {
           {selectedMarketData.phase === 'public' && 'Public phase opens trading to everyone and invites wider insight.'}
           {selectedMarketData.phase === 'execution' && 'During Execution, agents carry out tasks based on market signals.'}
           {selectedMarketData.phase === 'verification' && 'Verification phase lets oracles review the work and vote on the outcome.'}
-          {selectedMarketData.phase === 'resolved' && 'Market resolved: payouts issued and reputation scores update.'}
+          {selectedMarketData.phase === 'resolved' && `Market resolved: outcome ${selectedMarketData.resolution?.toUpperCase()} and reputation scores update.`}
         </div>
 
         <Tabs defaultValue="trade" className="w-full">
@@ -461,6 +471,11 @@ const InteractiveMarketDemo = () => {
                 <CardHeader>
                   <CardTitle>{selectedMarketData.title}</CardTitle>
                   <CardDescription>{selectedMarketData.description}</CardDescription>
+                  {selectedMarketData.phase === 'resolved' && selectedMarketData.resolution && (
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Outcome: {selectedMarketData.resolution.toUpperCase()}
+                    </p>
+                  )}
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4 mb-6">
@@ -506,86 +521,96 @@ const InteractiveMarketDemo = () => {
               </Card>
 
               {/* Trading interface */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Place Trade</CardTitle>
-                  <CardDescription>Buy shares based on your confidence</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Select Agent</label>
-                    <div className="space-y-2">
-                      {MOCK_AGENTS.map(agent => (
-                        <div 
-                          key={agent.id}
-                          className={`p-2 rounded border cursor-pointer ${
-                            currentAgent.id === agent.id ? 'border-primary bg-primary/5' : 'border-border'
-                          }`}
-                          onClick={() => setCurrentAgent(agent)}
-                        >
-                          <div className="flex items-center gap-2">
-                            <span>{agent.avatar}</span>
-                            <div className="flex-1">
-                              <div className="font-medium text-sm">{agent.name}</div>
-                              <div className="text-xs text-muted-foreground">{agent.role}</div>
+              {['verification', 'resolved'].includes(selectedMarketData.phase) ? (
+                <Card className="flex items-center justify-center">
+                  <CardContent className="text-center">
+                    <p className="text-sm text-muted-foreground">
+                      Trading is disabled during {selectedMarketData.phase === 'verification' ? 'verification' : 'the resolved phase'}.
+                    </p>
+                  </CardContent>
+                </Card>
+              ) : (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Place Trade</CardTitle>
+                    <CardDescription>Buy shares based on your confidence</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Select Agent</label>
+                      <div className="space-y-2">
+                        {MOCK_AGENTS.map(agent => (
+                          <div
+                            key={agent.id}
+                            className={`p-2 rounded border cursor-pointer ${
+                              currentAgent.id === agent.id ? 'border-primary bg-primary/5' : 'border-border'
+                            }`}
+                            onClick={() => setCurrentAgent(agent)}
+                          >
+                            <div className="flex items-center gap-2">
+                              <span>{agent.avatar}</span>
+                              <div className="flex-1">
+                                <div className="font-medium text-sm">{agent.name}</div>
+                                <div className="text-xs text-muted-foreground">{agent.role}</div>
+                              </div>
+                              <Badge variant="outline" className={`text-xs ${getRoleColor(agent.role)} text-white`}>
+                                Rep: {agent.reputation}
+                              </Badge>
                             </div>
-                            <Badge variant="outline" className={`text-xs ${getRoleColor(agent.role)} text-white`}>
-                              Rep: {agent.reputation}
-                            </Badge>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Trade Amount ($)</label>
-                    <Input
-                      type="number"
-                      value={tradeAmount}
-                      onChange={(e) => setTradeAmount(Number(e.target.value))}
-                      min={1}
-                      max={currentAgent.balance}
-                    />
-                  </div>
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Trade Amount ($)</label>
+                      <Input
+                        type="number"
+                        value={tradeAmount}
+                        onChange={(e) => setTradeAmount(Number(e.target.value))}
+                        min={1}
+                        max={currentAgent.balance}
+                      />
+                    </div>
 
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Reasoning</label>
-                    <Input
-                      placeholder="Why do you think this will succeed/fail?"
-                      value={tradeReasoning}
-                      onChange={(e) => setTradeReasoning(e.target.value)}
-                    />
-                  </div>
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Reasoning</label>
+                      <Input
+                        placeholder="Why do you think this will succeed/fail?"
+                        value={tradeReasoning}
+                        onChange={(e) => setTradeReasoning(e.target.value)}
+                      />
+                    </div>
 
-                  <div className="grid grid-cols-2 gap-2">
-                    <Button 
-                      onClick={() => {
-                        if (tradeReasoning) {
-                          placeTrade(selectedMarketData.id, 'yes', tradeAmount, currentAgent, tradeReasoning);
-                          setTradeReasoning('');
-                        }
-                      }}
-                      className="bg-green-600 hover:bg-green-700"
-                      disabled={!tradeReasoning}
-                    >
-                      Buy YES
-                    </Button>
-                    <Button 
-                      onClick={() => {
-                        if (tradeReasoning) {
-                          placeTrade(selectedMarketData.id, 'no', tradeAmount, currentAgent, tradeReasoning);
-                          setTradeReasoning('');
-                        }
-                      }}
-                      className="bg-red-600 hover:bg-red-700"
-                      disabled={!tradeReasoning}
-                    >
-                      Buy NO
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Button
+                        onClick={() => {
+                          if (tradeReasoning) {
+                            placeTrade(selectedMarketData.id, 'yes', tradeAmount, currentAgent, tradeReasoning);
+                            setTradeReasoning('');
+                          }
+                        }}
+                        className="bg-green-600 hover:bg-green-700"
+                        disabled={!tradeReasoning}
+                      >
+                        Buy YES
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          if (tradeReasoning) {
+                            placeTrade(selectedMarketData.id, 'no', tradeAmount, currentAgent, tradeReasoning);
+                            setTradeReasoning('');
+                          }
+                        }}
+                        className="bg-red-600 hover:bg-red-700"
+                        disabled={!tradeReasoning}
+                      >
+                        Buy NO
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </div>
 
             {/* Recent trades */}
@@ -649,7 +674,7 @@ const InteractiveMarketDemo = () => {
                           size="sm"
                           variant="outline"
                           className="w-full"
-                          onClick={() => alert(`Viewing: ${content.title}`)}
+                          onClick={() => setPreviewContent(content)}
                         >
                           <Eye className="w-4 h-4 mr-2" />
                           View Content
@@ -708,6 +733,18 @@ const InteractiveMarketDemo = () => {
                 )}
               </CardContent>
             </Card>
+
+            <Dialog open={!!previewContent} onOpenChange={() => setPreviewContent(null)}>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>{previewContent?.title}</DialogTitle>
+                  <DialogDescription>{previewContent?.description}</DialogDescription>
+                </DialogHeader>
+                {previewContent?.content && (
+                  <p className="text-sm text-muted-foreground mt-2">{previewContent.content}</p>
+                )}
+              </DialogContent>
+            </Dialog>
           </TabsContent>
 
           <TabsContent value="analysis" className="space-y-6">
