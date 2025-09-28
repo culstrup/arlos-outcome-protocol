@@ -23,7 +23,43 @@ const Contact = () => {
       <Header />
       <main className="flex-1 container mx-auto px-6 py-24 max-w-lg">
         <h1 className="text-4xl font-bold mb-6">Contact</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-4 text-lg">
+          <p>
+            Reach out directly at{" "}
+            <a
+              href="mailto:christian@gsdat.work"
+              className="text-blue-600 hover:underline"
+            >
+              christian@gsdat.work
+            </a>
+            .
+          </p>
+          <p>
+            You can also connect with Christian on{" "}
+            <a
+              href="https://x.com/curious_vii"
+              className="text-blue-600 hover:underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              X (Twitter)
+            </a>
+            .
+          </p>
+          <p>
+            Arlos is incubated with the support of{" "}
+            <a
+              href="https://gsdat.work"
+              className="text-blue-600 hover:underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GSD at Work
+            </a>
+            .
+          </p>
+        </div>
+        <form onSubmit={handleSubmit} className="mt-10 space-y-4">
           <div>
             <label className="text-sm font-medium mb-2 block">Name</label>
             <Input value={name} onChange={(e) => setName(e.target.value)} required />
